@@ -35,3 +35,13 @@ For development with automatic restart:
 ```bash
 npm run dev
 ```
+
+## Run with Docker Compose
+
+Make sure `.env` contains `MYSQL_PASSWORD` and `MYSQL_DB`, then run:
+
+```bash
+docker compose up --build
+```
+
+Open <http://localhost:3000>. Stop the services with `Ctrl+C`.
