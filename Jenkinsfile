@@ -1,3 +1,5 @@
+
+
 pipeline {
     agent any
 
@@ -20,6 +22,7 @@ pipeline {
             }
         }
 
+<<<<<<< HEAD
   
 stage('Docker Build') {
     steps {
@@ -29,3 +32,13 @@ stage('Docker Build') {
 
     }
 }
+=======
+        stage('Docker Build') {
+            steps {
+                bat 'docker build -t nodejs-todo-demo:latest .'
+            }
+        }
+    }
+}
+
+>>>>>>> 0173ed4263385bdbfaf607c10f5a9e280c18a730
