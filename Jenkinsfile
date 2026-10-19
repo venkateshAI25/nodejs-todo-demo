@@ -1,12 +1,11 @@
 
-
 pipeline {
     agent any
 
     stages {
         stage('Checkout') {
             steps {
-                echo 'Source code retrieved from GitHub'
+                checkout scm
             }
         }
 
@@ -16,29 +15,25 @@ pipeline {
             }
         }
 
-        stage('Unit Test') {
+        stage('Run Tests') {
             steps {
-                bat 'npm test'
+                bat 'npm test -- --runInBand'
             }
         }
 
-<<<<<<< HEAD
-  
-stage('Docker Build') {
-    steps {
-        bat '"C:\\Users\\venkateshwaran\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t nodejs-todo-demo:latest .'
-    }
-}
-
-    }
-}
-=======
         stage('Docker Build') {
             steps {
                 bat 'docker build -t nodejs-todo-demo:latest .'
             }
         }
     }
-}
 
->>>>>>> 0173ed4263385bdbfaf607c10f5a9e280c18a730
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Check the stage logs.'
+        }
+    }
+}
