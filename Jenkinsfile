@@ -21,11 +21,14 @@ pipeline {
             }
         }
 
-        stage('Docker Build') {
-            steps {
-                bat 'docker build -t nodejs-todo-demo:latest .'
-            }
-        }
+        
+stage('Docker Build') {
+    steps {
+        bat '"C:\\Users\\venkateshwaran\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" --version'
+        bat '"C:\\Users\\venkateshwaran\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t nodejs-todo-demo:latest .'
+    }
+}
+
     }
 
     post {
